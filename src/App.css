@@ -1,0 +1,105 @@
+body {
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    position: relative;
+    width: 100%;
+    height: 400px;
+
+}
+.material-icons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+.form-modal{
+    margin-top: 10%;
+}
+.login-text-error{
+    color: red;
+}
+.login-text-success{
+    color: green;
+}
+.card-img{
+    background-image: url('./img/note-card-png.png');
+    overflow: hidden;
+}
+.made-note{
+    opacity: 0.6;
+}
+.list-card{
+    height: 550px;
+    max-height: 550px;
+    overflow-y: auto;
+    width: 100%;
+}
+.priority-filter-h{
+    background-color: red;
+    color: white;
+}
+.priority-filter-m{
+    background-color: yellow;
+}
+.priority-filter-l{
+    background-color: green;
+    color: white;
+}
+.fiter-notes{
+    height: 50px;
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 8px;
+
+}
+.radio-label-filter{
+    color: black;
+    font-weight: 600;
+}
+.input-title-filter{
+    width: 260px;
+}
+.info-notes{
+    text-align: center;
+    color: white;
+    height: 300px;
+    padding-top: 230px;
+}
+.modal-msg{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 30%;
+    padding-right: 30%;
+    text-align: center;
+}
+.modal-msg-error{
+    color: red;
+}
+.modal-msg-ok{
+    color:green;
+}
+.avatar{
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+.avatar-note{
+    width: 30px;
+    height: 30px;
+    margin-left: 0px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+.label-form{
+    font-size: small;
+    color: darkslategrey;
+}
+.not-found{
+    text-align: center;
+    color: white;
+    margin-top: 20%;
+}
