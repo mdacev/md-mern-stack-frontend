@@ -3,6 +3,17 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+app.use((req, res, next) => {
+    res.header(
+        "Access-Control-Allow-Origin",
+        `${process.env.REACT_APP_API}`
+    );
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
 
 app.use(compression())
 
