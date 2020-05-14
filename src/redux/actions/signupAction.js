@@ -17,7 +17,8 @@ const signupAction = (formData) => {
                     }
                 };
 
-                const response =  await  axios.post(configfront.EOP_SINGUP, formData, Object.assign({}, reqHeaders));
+                const server_host = process.env.REACT_APP_API+configfront.EOP_SIGNUP;
+                const response =  await  axios.post(server_host, formData, Object.assign({}, reqHeaders));
                 dispatch( { type, payload: response.data } );
             }
             catch(err){

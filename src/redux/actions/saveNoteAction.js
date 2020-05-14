@@ -22,10 +22,11 @@ const saveNoteAction = (id , note) => {
         try{
 
             let response;
+            const server_host = process.env.REACT_APP_API+configfront.EOP_NOTES;
             if(id && id !== '')
-                response =  await axios.put(configfront.EOP_NOTES + '/' + id, note , Object.assign({}, reqHeaders));
+                response =  await axios.put(server_host + '/' + id, note , Object.assign({}, reqHeaders));
             else
-                response = await axios.post(configfront.EOP_NOTES, note , Object.assign({}, reqHeaders));
+                response = await axios.post(server_host, note , Object.assign({}, reqHeaders));
 
             dispatch( { type, payload: response.data } );
         }

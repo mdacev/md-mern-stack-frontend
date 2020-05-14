@@ -1,6 +1,6 @@
 {
     "EOP_SIGNIN" : "/signin",
-    "EOP_SINGUP" : "/signup",
+    "EOP_SIGNUP" : "/signup",
     "EOP_NOTES" : "/api/notes",
     "EOP_USERS" : "/api/users"
 }

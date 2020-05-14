@@ -24,7 +24,8 @@ const getNotesAction = (text) => {
 
         return async (dispatch) => {
             try{
-                const response =  await  axios.get(configfront.EOP_NOTES, Object.assign({}, reqHeaders))
+                const server_host = process.env.REACT_APP_API+configfront.EOP_NOTES;
+                const response =  await  axios.get(server_host, Object.assign({}, reqHeaders))
                 dispatch( { type, payload: response.data } ) 
             }
             catch(err){

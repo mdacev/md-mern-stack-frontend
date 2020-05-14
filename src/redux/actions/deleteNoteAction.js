@@ -7,7 +7,8 @@ const deleteNoteAction = (id) => {
     return async (dispatch) => {
         try{
 
-            const response =  await  axios.delete(configfront.EOP_NOTES + '/' + id );
+            const server_host = process.env.REACT_APP_API+configfront.EOP_NOTES;
+            const response =  await  axios.delete(server_host + '/' + id );
             dispatch( { type, payload: response.data } );
         }
         catch(err){
