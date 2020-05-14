@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+/*
 app.use(function (req, res, next) {
 
     res.header("Access-Control-Allow-Origin", '*');
@@ -14,6 +15,7 @@ app.use(function (req, res, next) {
     next();
     
 });
+*/
 
 app.use(compression())
 
