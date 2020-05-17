@@ -8,6 +8,7 @@ const findNoteByEditAction = (id) => {
         try{
 
             const server_host = process.env.REACT_APP_API+configfront.EOP_NOTES;
+            console.log(server_host + '/' + id);
             const response =  await  axios.get(server_host + '/' + id);
             dispatch( { type, payload: response.data } );
         }

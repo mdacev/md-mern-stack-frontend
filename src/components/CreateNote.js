@@ -29,7 +29,8 @@ import saveNoteAction from '../redux/actions/saveNoteAction'
 
     //Mount
     async componentDidMount() {
-        const res = await axios.get(configfront.EOP_USERS);
+        const server_host = process.env.REACT_APP_API+configfront.EOP_USERS
+        const res = await axios.get(server_host);
         this.setState({selectedPriority: 'High'});
         if (res.data.length > 0) {
             this.setState({
