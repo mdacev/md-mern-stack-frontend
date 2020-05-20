@@ -1,5 +1,6 @@
 import axios from 'axios';
-import configfront from '../../helpers/configfront'
+import configfront from '../../helpers/configfront';
+
 
 export const type = 'SIGNIN';
 
