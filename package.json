@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "https://md-mern-notes-api.herokuapp.com",
+  
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
