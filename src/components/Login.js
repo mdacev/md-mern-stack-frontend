@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import hjson from '../helpers/headers.json'
 import {connect} from 'react-redux'
-//import formData from 'form-data'
+import { ModalManager} from 'react-dynamic-modal';
+import ModalMsg from './ModalMsg'
+import GoogleLogin from 'react-google-login';
 
 import signinAction from '../redux/actions/signinAction' 
 import signupAction from '../redux/actions/signupAction'
@@ -144,11 +146,14 @@ import signupAction from '../redux/actions/signupAction'
         try{
                 e.preventDefault();
                 //=====  signin
-                if(e.target.id === 'signin'){
+                if(e.target.id === 'signin'){   
+
                     const user = {
                         username: this.state.username,
                         password: this.state.password
                     }
+                    
+                   
 
                     await this.props.signinAction(user);
                     const {loginReducer} = this.props;
@@ -198,6 +203,7 @@ import signupAction from '../redux/actions/signupAction'
                         formData.append('password', this.state.password);
                         formData.append('email', this.state.email);
                         formData.append('image', this.state.image);
+                        formData.append('google', false);
 
                         for (var pair of formData.entries()) {
                             console.log(pair[0]+ ' - ' + pair[1]); 
@@ -270,8 +276,56 @@ import signupAction from '../redux/actions/signupAction'
         document.getElementById("username").focus();
     }
 
+    signupGoogle = async (_gObj) => {
+
+        let formData = new FormData();
+        let _user = _gObj.profileObj;
+
+        formData.append('username', _user.name);
+        formData.append('password', _user.email);
+        formData.append('email',  _user.email);
+        formData.append('image', _user.imageUrl);
+        formData.append('google', true);
+
+        await this.props.signupAction(formData);
+        const {loginReducer} = this.props;
+        const res = loginReducer.response;
+        if(res.auth){
+            
+            if(res.exist === undefined){
+                hjson['x-access-token'] = res.token;
+                localStorage.setItem('token', JSON.stringify(hjson['x-access-token']));
+                localStorage.setItem('username', '('+res.username+')');
+                localStorage.setItem('userid', res.userId);
+                localStorage.setItem('avatar', res.avatar);
+                this.props.history.push('/notes');
+            }
+            else{
+
+                this.setState({ username:  _user.name , 
+                    password:  _user.email , 
+                    email:  _user.email
+                });
+
+                this.setSingin();
+                this.setMessage(res.msg, res.path);
+            }
+        }
+    }
+
+    setMessage = (message, path) => {
+        ModalManager.open(<ModalMsg text={message} onRequestClose={() => true} cn="modal-msg modal-msg-ok"/>);
+        this.props.history.push(path);
+    }
 
     render() {
+
+        const responseGoogle = (response) => {
+            console.log(response);
+            let gObj = response;
+            this.signupGoogle(gObj);
+        }
+
         return (
             <div className="row">
                 <div className="col-md-4 offset-md-2 mx-auto form-modal">
@@ -373,6 +427,18 @@ import signupAction from '../redux/actions/signupAction'
                                     </button>
                                     :null}
                                 </div>
+                                
+                                {this.state.h_button ?
+                                <div className="col-md-12 mt-2 offset-md-6">
+                                    <GoogleLogin id="google"
+                                        clientId="400541357062-mktdshn8cijvodmsdebummjrfro2a723.apps.googleusercontent.com"
+                                        buttonText="Sign In with Google"
+                                        onSuccess={responseGoogle}
+                                        onFailure={responseGoogle}
+                                    >
+                                    </GoogleLogin>
+                                </div>
+                                :null}
                                 
                         </form>
                     </div>
