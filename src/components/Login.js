@@ -393,22 +393,24 @@ import signupAction from '../redux/actions/signupAction'
                                     <p className={this.state.show_ok_login ? 'login-text-success' : 'login-text-error'}>{this.state.msg_login}</p>
                                 </div>
                                 :null}
-                                <div className="row col-md-12">
+
+                                <div className="row col-md-12" style={{justifyContent: 'flex-end'}}>
 
                                     {this.state.h_button ?
-                                    <button id="signin" type="submit" onClick={this.onSubmit} value="in"className="btn btn-primary">
-                                        <i className="material-icons mr-2">vpn_key</i>Sign In 
-                                    </button>
+                                    <div className="row col-md-6">
+                                        <button id="signin" type="submit" onClick={this.onSubmit} value="in"className="btn btn-primary">
+                                            <i className="material-icons mr-2">vpn_key</i>Sign In 
+                                        </button>
+                                    </div>
                                     : null}
-                                    
-                                    {this.state.h_button ?
-                                    <span className="col-md-4"/>
-                                    :null}
+                                
 
                                     {this.state.h_button ?
-                                    <button id="up_li" type="button" value="up_li" onClick={this.onclickLink} className="btn btn-sm btn-link ml-4">
-                                        <i className="material-icons mr-2">fingerprint</i>Sign Up 
-                                    </button>
+                                    <div className="row col-md-6">
+                                        <button id="up_li" type="button" value="up_li" onClick={this.onclickLink} className="btn btn-secondary">
+                                            <i className="material-icons mr-2">fingerprint</i>Sign Up 
+                                        </button>
+                                    </div>
                                     : null}
 
                                     {!this.state.h_button ?
@@ -429,7 +431,7 @@ import signupAction from '../redux/actions/signupAction'
                                 </div>
                                 
                                 {this.state.h_button ?
-                                <div className="col-md-12 mt-2 offset-md-6">
+                                <div className="col-md-12 mt-3 pt-2" style={{textAlign: 'center', borderTop: '1px solid darkgrey'}}>
                                     <GoogleLogin id="google"
                                         clientId="400541357062-mktdshn8cijvodmsdebummjrfro2a723.apps.googleusercontent.com"
                                         buttonText="Sign In with Google"
